@@ -65,8 +65,8 @@ extern "C" {
 #ifndef OPENSSL_THREADS
 # define OPENSSL_THREADS
 #endif
-#ifndef OPENSSL_NO_STATIC_ENGINE
-# define OPENSSL_NO_STATIC_ENGINE
+#ifndef OPENSSL_NO_DYNAMIC_ENGINE
+# define OPENSSL_NO_DYNAMIC_ENGINE
 #endif
 #ifndef OPENSSL_FIPS
 # define OPENSSL_FIPS
@@ -139,8 +139,8 @@ extern "C" {
 
 #if !(defined(VMS) || defined(__VMS)) /* VMS uses logical names instead */
 #if defined(HEADER_CRYPTLIB_H) && !defined(OPENSSLDIR)
-#define ENGINESDIR "/usr/lib64/engines"
-#define OPENSSLDIR "/usr"
+#define ENGINESDIR "/opt/openresty-bundled/openssl-1.0.2n/.openssl/lib/engines"
+#define OPENSSLDIR "/opt/openresty-bundled/openssl-1.0.2n/.openssl/ssl"
 #endif
 #endif
 

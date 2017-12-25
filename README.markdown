@@ -96,6 +96,16 @@ Prepare init.d or systemd:
 copy util/openresty.service to /usr/lib/systemd/system/
 please use util/initd-openresty.sh if you prefer init.d
 
+For FIPS builds:
+
+
+add the following to config above:
+
+--with-openssl-opt='fips no-ec2m no-ssl2 no-ssl3 no-weak-ssl-ciphers'
+
+also configure openssl with fips module as directed below
+
+
 Note on PID:
 
 PID is at /var/run/openresty.pid and initialized by init.d or systemd, please ensure this match with nginx.conf
