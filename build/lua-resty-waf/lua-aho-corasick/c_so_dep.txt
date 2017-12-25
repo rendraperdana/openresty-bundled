@@ -1,3 +1,0 @@
-build_so/ac_fast.o: ac_fast.cxx ac_slow.hpp ac_util.hpp ac_fast.hpp ac.h
-build_so/ac_slow.o: ac_slow.cxx ac_slow.hpp ac_util.hpp ac.h
-build_so/ac.o: ac.cxx ac_slow.hpp ac_util.hpp ac_fast.hpp ac.h
