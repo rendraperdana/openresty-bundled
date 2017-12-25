@@ -3,7 +3,7 @@ Version
 
 Openresty       version 1.11.2.5
 
-OpenSSL         version 1.0.2l
+OpenSSL         version 1.0.2n-fips
 
 ...and many other components in official openresty official package
 
@@ -14,7 +14,9 @@ Known Issues
 Will not effecting operation unless you explicitly need this directive:
 
 rds_csv on;
+
 rds_csv_row_terminator;
+
 
 2. HTTP/2 is not supported due to limitation in lua-resty-upload. Enabling HTTP/2 will result in exception within lua when uploading (POST) contents that encodes with multipart/form or data.
 
@@ -24,7 +26,7 @@ INTRO
 
 This is openresty bundled with several LUA component served as Load Balancer and Web Application Firewall (WAF)
 
-Tested on Centos 7 kernel 4.9.31
+Tested on Centos 7 kernel 4.9.71
 
 Main package:
 
