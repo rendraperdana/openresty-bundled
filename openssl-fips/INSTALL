@@ -36,6 +36,26 @@
 
   $ ./config --prefix=/usr/local --openssldir=/usr/local/openssl
 
+If you want to compile openssl to local you can use:
+
+./config --prefix=/usr --openssldir=/usr/local/openssl shared
+
+or replace current system openssl, please be careful on this option
+
+./config --prefix=/usr --openssldir=/usr shared
+
+for FIPS module:
+
+enter openssl-fips-(version) directory and then
+
+./config fips no-ec2m no-ssl2 no-ssl3 no-weak-ssl-ciphers make depend make && make install
+
+continue to main openssl directory
+
+./config fips no-ec2m no-ssl2 no-ssl3 no-weak-ssl-ciphers --prefix=/usr --openssldir=/usr shared make depend make && make install
+
+and then make clean && make && make install
+
 
  Configuration Options
  ---------------------
