@@ -60,7 +60,7 @@ Common pitfall: please reconfig OpenSSL (note below) and execute make clean if b
 You can configure compilation with flags:
 
 ./configure \
---with-cc-opt=' -O2 -Ofast -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=native -DTCP_FASTOPEN=23' \
+--with-cc-opt=' -O3 -Ofast -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=native -DTCP_FASTOPEN=23' \
 --with-pcre-jit \
 --with-ipv6 \
 --with-stream \
@@ -80,7 +80,7 @@ You can configure compilation with flags:
 --with-threads \
 --with-file-aio \
 --with-http_ssl_module \
---with-openssl=openssl-1.0.2n \
+--with-openssl=openssl-fips \
 -j$(grep -c ^processor /proc/cpuinfo)
 
 compile and install with following commands:

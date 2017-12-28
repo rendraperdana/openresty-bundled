@@ -8,9 +8,6 @@ extern "C" {
 #ifndef OPENSSL_DOING_MAKEDEPEND
 
 
-#ifndef OPENSSL_NO_EC2M
-# define OPENSSL_NO_EC2M
-#endif
 #ifndef OPENSSL_NO_EC_NISTP_64_GCC_128
 # define OPENSSL_NO_EC_NISTP_64_GCC_128
 #endif
@@ -35,9 +32,6 @@ extern "C" {
 #ifndef OPENSSL_NO_RFC3779
 # define OPENSSL_NO_RFC3779
 #endif
-#ifndef OPENSSL_NO_RSAX
-# define OPENSSL_NO_RSAX
-#endif
 #ifndef OPENSSL_NO_SCTP
 # define OPENSSL_NO_SCTP
 #endif
@@ -46,9 +40,6 @@ extern "C" {
 #endif
 #ifndef OPENSSL_NO_SSL2
 # define OPENSSL_NO_SSL2
-#endif
-#ifndef OPENSSL_NO_SSL3
-# define OPENSSL_NO_SSL3
 #endif
 #ifndef OPENSSL_NO_STORE
 # define OPENSSL_NO_STORE
@@ -65,11 +56,8 @@ extern "C" {
 #ifndef OPENSSL_THREADS
 # define OPENSSL_THREADS
 #endif
-#ifndef OPENSSL_NO_STATIC_ENGINE
-# define OPENSSL_NO_STATIC_ENGINE
-#endif
-#ifndef OPENSSL_FIPS
-# define OPENSSL_FIPS
+#ifndef OPENSSL_NO_DYNAMIC_ENGINE
+# define OPENSSL_NO_DYNAMIC_ENGINE
 #endif
 
 /* The OPENSSL_NO_* macros are also defined as NO_* if the application
@@ -77,9 +65,6 @@ extern "C" {
    who haven't had the time to do the appropriate changes in their
    applications.  */
 #ifdef OPENSSL_ALGORITHM_DEFINES
-# if defined(OPENSSL_NO_EC2M) && !defined(NO_EC2M)
-#  define NO_EC2M
-# endif
 # if defined(OPENSSL_NO_EC_NISTP_64_GCC_128) && !defined(NO_EC_NISTP_64_GCC_128)
 #  define NO_EC_NISTP_64_GCC_128
 # endif
@@ -104,9 +89,6 @@ extern "C" {
 # if defined(OPENSSL_NO_RFC3779) && !defined(NO_RFC3779)
 #  define NO_RFC3779
 # endif
-# if defined(OPENSSL_NO_RSAX) && !defined(NO_RSAX)
-#  define NO_RSAX
-# endif
 # if defined(OPENSSL_NO_SCTP) && !defined(NO_SCTP)
 #  define NO_SCTP
 # endif
@@ -115,9 +97,6 @@ extern "C" {
 # endif
 # if defined(OPENSSL_NO_SSL2) && !defined(NO_SSL2)
 #  define NO_SSL2
-# endif
-# if defined(OPENSSL_NO_SSL3) && !defined(NO_SSL3)
-#  define NO_SSL3
 # endif
 # if defined(OPENSSL_NO_STORE) && !defined(NO_STORE)
 #  define NO_STORE
@@ -139,8 +118,8 @@ extern "C" {
 
 #if !(defined(VMS) || defined(__VMS)) /* VMS uses logical names instead */
 #if defined(HEADER_CRYPTLIB_H) && !defined(OPENSSLDIR)
-#define ENGINESDIR "/usr/lib64/engines"
-#define OPENSSLDIR "/usr"
+#define ENGINESDIR "/opt/openresty-bundled/openssl-fips/.openssl/lib/engines"
+#define OPENSSLDIR "/opt/openresty-bundled/openssl-fips/.openssl/ssl"
 #endif
 #endif
 
