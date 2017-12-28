@@ -1,7 +1,9 @@
-!#/bin/bash
+#!/bin/bash
 
 yum groupinstall 'Development Tools' -y
 yum install lua-devel readline-devel pcre-devel gcc perl-Digest-* zlib-devel -y
+
+SECONDS=0
 
 gmake clean
 
@@ -42,3 +44,16 @@ rm -f /usr/local/bin/openresty
 ln -s /usr/local/openresty/bin/openresty /usr/local/bin/openresty
 systemctl daemon-reload
 systemctl enable openresty
+
+if (( $SECONDS > 3600 )) ; then
+    let "hours=SECONDS/3600"
+    let "minutes=(SECONDS%3600)/60"
+    let "seconds=(SECONDS%3600)%60"
+    echo "Completed in $hours hour(s), $minutes minute(s) and $seconds second(s)" 
+elif (( $SECONDS > 60 )) ; then
+    let "minutes=(SECONDS%3600)/60"
+    let "seconds=(SECONDS%3600)%60"
+    echo "Completed in $minutes minute(s) and $seconds second(s)"
+else
+    echo "Completed in $SECONDS seconds"
+fi
