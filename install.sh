@@ -31,11 +31,14 @@ cd ../
 --with-file-aio \
 --with-http_ssl_module \
 --with-openssl=openssl-fips \
+--with-openssl-opt='fips no-ec2m no-ssl2 no-ssl3 no-weak-ssl-ciphers' \
 -j$(grep -c ^processor /proc/cpuinfo)
 
 gmake j$(grep -c ^processor /proc/cpuinfo)
 gmake install
+rm -f /usr/lib/systemd/system/openresty.service
 cp ./util/openresty.service /usr/lib/systemd/system/ -v
+rm -f /usr/local/bin/openresty
 ln -s /usr/local/openresty/bin/openresty /usr/local/bin/openresty
 systemctl daemon-reload
 systemctl enable openresty
