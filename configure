@@ -135,7 +135,7 @@ my (@ngx_opts, @ngx_cc_opts, @ngx_ld_opts);
 
 # use -O2 to compile everything by default (which can be overridden
 # by the user's own --with-cc-opt=OPTS option):
-push @ngx_cc_opts, "-O2";
+push @ngx_cc_opts, "-O3";
 
 for my $opt (@ARGV) {
     next unless defined $opt;
@@ -515,7 +515,7 @@ _END_
         $opts_line .= " \\\n  --with-debug";
 
     } else {
-        #unshift @ngx_cc_opts, '-O2';
+        #unshift @ngx_cc_opts, '-O3';
     }
 
     if (-d 'build') {

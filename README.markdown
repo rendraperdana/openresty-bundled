@@ -62,7 +62,6 @@ You can configure compilation with flags:
 ./configure \
 --with-cc-opt=' -O3 -Ofast -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=native -DTCP_FASTOPEN=23' \
 --with-pcre-jit \
---with-ipv6 \
 --with-stream \
 --with-stream_ssl_module \
 --without-mail_pop3_module \
@@ -81,6 +80,7 @@ You can configure compilation with flags:
 --with-file-aio \
 --with-http_ssl_module \
 --with-openssl=openssl-fips \
+--with-openssl-opt='fips no-ec2m no-ssl2 no-ssl3 no-weak-ssl-ciphers -O3 -Ofast -w -march=native' \
 -j$(grep -c ^processor /proc/cpuinfo)
 
 compile and install with following commands:
@@ -101,7 +101,7 @@ For FIPS builds:
 
 add the following to config above:
 
---with-openssl-opt='fips no-ec2m no-ssl2 no-ssl3 no-weak-ssl-ciphers'
+--with-openssl-opt='fips no-ec2m no-ssl2 no-ssl3 no-weak-ssl-ciphers -O3 -Ofast -w -march-native'
 
 also configure openssl with fips module as directed below
 
