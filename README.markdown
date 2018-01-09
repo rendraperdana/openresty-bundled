@@ -4,6 +4,7 @@ Version
 Openresty       version 1.11.2.5
 
 OpenSSL         version 1.0.2n-fips
+LibreSSL	version 2.6.4
 
 ...and many other components in official openresty official package
 
@@ -86,6 +87,12 @@ You can configure compilation with flags:
 compile and install with following commands:
 
 gmake -j$(grep -c ^processor /proc/cpuinfo) && gmake install
+
+for libressl:
+
+remove --with-openssl-opt and use --with-openssl=libressl-2.6.4
+
+if fail to compile please execute in libressl directory: autoreconf -f -i
 
 
 for kong installation add:
