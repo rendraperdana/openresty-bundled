@@ -8,8 +8,12 @@ SECONDS=0
 gmake clean
 
 cd ./openssl-fips
+./config
 make clean
-cd ../
+cd ./openssl-fips-2.0.16
+./config
+make clean
+cd ../../
 
 ./configure \
 --with-cc-opt='-O3 -Ofast -g -pipe -Wall -Wp,-D_FORTIFY_SOURCE=2 -fexceptions -fstack-protector-strong --param=ssp-buffer-size=4 -grecord-gcc-switches -m64 -mtune=native -DTCP_FASTOPEN=23' \
@@ -43,6 +47,9 @@ rm -f /usr/local/bin/openresty
 ln -s /usr/local/openresty/bin/openresty /usr/local/bin/openresty
 systemctl daemon-reload
 systemctl enable openresty
+
+mkdir /var/log/nginx
+chown nobody:nobody /var/log/nginx
 
 if (( $SECONDS > 3600 )) ; then
     let "hours=SECONDS/3600"
