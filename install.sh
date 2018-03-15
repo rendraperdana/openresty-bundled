@@ -10,7 +10,13 @@ gmake clean
 cd ./openssl-fips
 ./config
 make clean
+
 cd ./openssl-fips-2.0.16
+./config fips no-ec2m no-ssl2 no-ssl3 no-weak-ssl-ciphers -O3 -Ofast -march=native
+make clean
+make -j$(grep -c ^processor /proc/cpuinfo)
+make install
+
 ./config
 make clean
 cd ../../
@@ -48,7 +54,7 @@ ln -s /usr/local/openresty/bin/openresty /usr/local/bin/openresty
 systemctl daemon-reload
 systemctl enable openresty
 
-mkdir /var/log/nginx
+mkdir -p /var/log/nginx
 chown nobody:nobody /var/log/nginx
 
 if (( $SECONDS > 3600 )) ; then
